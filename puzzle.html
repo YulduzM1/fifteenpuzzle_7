@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fifteen Puzzle</title>
     <link rel="stylesheet" href="puzzle.css">
-
 </head>
 <body>
     <div id="game-info">
@@ -22,7 +21,14 @@
     </audio>
 
     <button id="toggleMusicButton" onclick="toggleMusic()">Toggle Music</button>
-
+    <!-- Add this div at the end of the body -->
+    <div id="overlay" class="overlay">
+        <div id="overlayContent" class="overlay-content">
+            <div id="overlayMessage" class="overlay-message"></div>
+            <img id="overlayImage" class="overlay-image" alt="Winner Image">
+            <div class="overlay-close">Click anywhere to close</div>
+        </div>
+    </div>
 
 	<script src="puzzle.js"></script>
 </body>

@@ -101,6 +101,10 @@ document.addEventListener('DOMContentLoaded', function () {
         moves = 0;
         startTime = new Date().getTime();
         timerInterval = setInterval(updateTimer, 1000);
+
+        // Clear the game-won notification
+        const gameWonNotification = document.getElementById('game-won-notification');
+        gameWonNotification.textContent = '';
         for (let i = 0; i < 300; i++) { // Perform a few hundred random moves
             const emptyIndex = pieces.indexOf(totalPieces - 1);
             const adjacentIndices = getAdjacentIndices(emptyIndex);
@@ -113,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pieces[randomIndex] = totalPieces - 1;
         }
 
+        
         // Update the puzzle on the page after shuffling
         updatePuzzle();
         updateMovesAndTime();
@@ -146,8 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     }
 
-    // Function to update the best record
-   function updateBestRecord() {
+ // Function to update the best record
+function updateBestRecord() {
     const bestTime = localStorage.getItem('bestTime');
     const bestMoves = localStorage.getItem('bestMoves');
 
@@ -160,7 +165,23 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('bestMoves', moves);
         bestMovesElement.textContent = `Best Moves: ${moves}`;
     }
+    //extra feauture1: Winner-notifcation with a cute image. 
+    if (isSolved()) {
+        const overlay = document.getElementById('overlay');
+        const overlayContent = document.getElementById('overlayContent');
+        const overlayMessage = document.getElementById('overlayMessage');
+        const overlayImage = document.getElementById('overlayImage');
+
+        overlayMessage.textContent = 'Congratulations! You solved the puzzle!';
+        overlayImage.src = 'winner-image.gif';
+        overlay.style.display = 'flex';
+
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    }
 }
+
  let musicEnabled = true;
 
         function toggleMusic() {
