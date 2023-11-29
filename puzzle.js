@@ -78,8 +78,15 @@ document.addEventListener('DOMContentLoaded', function () {
             piece.textContent = pieces[index] === totalPieces - 1 ? '' : pieces[index] + 1;
             piece.style.backgroundPosition = `-${(pieces[index] % size) * 100}px -${Math.floor(pieces[index] / size) * 100}px`; // Adjust background position
             piece.classList.remove('movable-piece'); // Remove movable class after updating
+
+            piece.classList.add('shuffling');
+
+            setTimeout(() => {
+                piece.classList.remove('shuffling');
+            }, 300);
         });
     }
+
 
     // Function to get adjacent indices
     function getAdjacentIndices(index) {

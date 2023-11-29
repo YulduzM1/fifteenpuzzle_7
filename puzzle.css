@@ -115,3 +115,24 @@ body {
     color: #666;
     margin-top: 10px;
 }
+/*Extra Feauture2 Animation Styles: the tiles will rotate slightly 21deg. to make it more fun*/
+.puzzle-piece {
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.shuffling {
+    animation: rotateShuffle 0.2s ease-in-out;
+}
+
+@keyframes rotateShuffle {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(21deg); 
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
