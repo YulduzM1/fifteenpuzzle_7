@@ -1,0 +1,78 @@
+ body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 5px;
+            position: relative;
+            margin-bottom: 20px;
+            background-image: url('joyboy2.jpg'); /* Replace with your image URL */
+            background-size: 400px 400px;
+            background-repeat: no-repeat;
+        }
+
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32pt;
+            cursor: pointer;
+            border: 2px solid #000;
+            box-sizing: border-box; /* Include border in the total size */
+            transition: all 0.3s ease; /* Add transition for all properties with a duration of 0.3s and ease timing function */
+        }
+
+        .movable-piece {
+            border: 2px solid red !important;
+            color: #006600 !important;
+            text-decoration: underline !important;
+        }
+
+        #shuffle-button {
+            position: absolute;
+            right: 0;
+            bottom: -40px;
+            display: block;
+            width: 100px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #006600;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #shuffle-button:hover {
+            background-color: #004d00;
+        }
+
+        #game-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+		#toggleMusicButton {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #0099cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #toggleMusicButton:hover {
+            background-color: #007799;
+        }

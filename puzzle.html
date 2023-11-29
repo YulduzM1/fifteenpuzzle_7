@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fifteen Puzzle</title>
+    <link rel="stylesheet" href="puzzle.css">
+
+</head>
+<body>
+    <div id="game-info">
+        <p id="time">Time: 0s</p>
+        <p id="moves">Moves: 0</p>
+        <p id="best-time">Best Time: --</p>
+        <p id="best-moves">Best Moves: --</p>
+    </div>
+    <div id="puzzle-container"></div>
+    <button id="shuffle-button" onclick="shuffle()">Shuffle</button>
+    <div id="puzzle-container"></div>
+	 <audio id="backgroundMusic" loop>
+        <source src="bgmusic.mp3" type="audio/mp3">
+    </audio>
+
+    <button id="toggleMusicButton" onclick="toggleMusic()">Toggle Music</button>
+
+
+	<script src="puzzle.js"></script>
+</body>
+</html>
