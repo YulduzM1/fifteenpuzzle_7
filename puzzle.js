@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const piece = document.createElement('div');
             piece.classList.add('puzzle-piece');
             piece.textContent = pieces[i] === totalPieces - 1 ? '' : pieces[i] + 1;
-            piece.style.backgroundImage = `url('')`; // Set background image on the piece
+            piece.style.backgroundImage = `url('joyboy2.jpg')`; // Set background image on the piece
+            piece.style.backgroundSize = `${size * 100}px ${size * 100}px`; // Set background size based on the puzzle size
             piece.style.backgroundPosition = `-${(i % size) * 100}px -${Math.floor(i / size) * 100}px`; // Adjust background position
             piece.addEventListener('click', () => movePiece(i));
             piece.addEventListener('mouseover', () => handleMouseOver(i));
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to update the puzzle on the page
-    function updatePuzzle() {
+    /*function updatePuzzle() {
         const puzzlePieces = document.querySelectorAll('.puzzle-piece');
         puzzlePieces.forEach((piece, index) => {
             piece.textContent = pieces[index] === totalPieces - 1 ? '' : pieces[index] + 1;
@@ -85,8 +86,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 piece.classList.remove('shuffling');
             }, 300);
         });
+    }*/
+    function updatePuzzle() {
+        const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+        puzzlePieces.forEach((piece, index) => {
+            piece.textContent = pieces[index] === totalPieces - 1 ? '' : pieces[index] + 1;
+    
+            // Update background position dynamically
+            const backgroundX = (pieces[index] % size) * 100;
+            const backgroundY = Math.floor(pieces[index] / size) * 100;
+            piece.style.backgroundPosition = `-${backgroundX}px -${backgroundY}px`;
+    
+            piece.classList.remove('movable-piece'); // Remove movable class after updating
+    
+            piece.classList.add('shuffling');
+    
+            setTimeout(() => {
+                piece.classList.remove('shuffling');
+            }, 300);
+        });
     }
-
 
     // Function to get adjacent indices
     function getAdjacentIndices(index) {
