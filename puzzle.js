@@ -190,23 +190,24 @@ function updateBestRecord() {
     }
 }
 
-let musicEnabled = true;
+  let musicEnabled = true;
 
-function toggleMusic() {
-    const backgroundMusic = document.getElementById('backgroundMusic');
-    const toggleMusicButton = document.getElementById('toggleMusicButton');
+    // Move toggleMusic function outside of the DOMContentLoaded event listener
+    window.toggleMusic = function () {
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const toggleMusicButton = document.getElementById('toggleMusicButton');
 
-    if (musicEnabled) {
-        backgroundMusic.pause();
-        toggleMusicButton.textContent = 'Enable Music';
-    } else {
-        backgroundMusic.play().then(() => {
-            toggleMusicButton.textContent = 'Disable Music';
-        }).catch((error) => {
-            console.error('Error playing audio:', error);
-        });
-    }
+        if (musicEnabled) {
+            backgroundMusic.pause();
+            toggleMusicButton.textContent = 'Enable Music';
+        } else {
+            backgroundMusic.play().then(() => {
+                toggleMusicButton.textContent = 'Disable Music';
+            }).catch((error) => {
+                console.error('Error playing audio:', error);
+            });
+        }
 
-    musicEnabled = !musicEnabled;
-}
+        musicEnabled = !musicEnabled;
+    };
 });
