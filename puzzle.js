@@ -104,31 +104,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to shuffle the puzzle pieces
     window.shuffle = function () {
-        clearInterval(timerInterval);
-        moves = 0;
-        startTime = new Date().getTime();
-        timerInterval = setInterval(updateTimer, 1000);
+    clearInterval(timerInterval);
+    moves = 0;
+    startTime = new Date().getTime();
+    timerInterval = setInterval(updateTimer, 1000);
 
-        // Clear the game-won notification
-        const gameWonNotification = document.getElementById('game-won-notification');
-        gameWonNotification.textContent = '';
-        for (let i = 0; i < 300; i++) { // Perform a few hundred random moves
-            const emptyIndex = pieces.indexOf(totalPieces - 1);
-            const adjacentIndices = getAdjacentIndices(emptyIndex);
+    // Clear the game-won notification (remove this line if not needed)
+    // const gameWonNotification = document.getElementById('game-won-notification');
+    // gameWonNotification.textContent = '';
 
-            // Choose a random adjacent index
-            const randomIndex = adjacentIndices[Math.floor(Math.random() * adjacentIndices.length)];
+    for (let i = 0; i < 300; i++) { // Perform a few hundred random moves
+        const emptyIndex = pieces.indexOf(totalPieces - 1);
+        const adjacentIndices = getAdjacentIndices(emptyIndex);
 
-            // Swap the positions of the random adjacent piece and the empty space
-            pieces[emptyIndex] = pieces[randomIndex];
-            pieces[randomIndex] = totalPieces - 1;
-        }
+        // Choose a random adjacent index
+        const randomIndex = adjacentIndices[Math.floor(Math.random() * adjacentIndices.length)];
 
-        
-        // Update the puzzle on the page after shuffling
-        updatePuzzle();
-        updateMovesAndTime();
-    };
+        // Swap the positions of the random adjacent piece and the empty space
+        pieces[emptyIndex] = pieces[randomIndex];
+        pieces[randomIndex] = totalPieces - 1;
+    }
+
+    // Update the puzzle on the page after shuffling
+    updatePuzzle();
+    updateMovesAndTime();
+};
+
 
     // Function to update the timer
     function updateTimer() {
@@ -189,24 +190,23 @@ function updateBestRecord() {
     }
 }
 
- let musicEnabled = true;
+let musicEnabled = true;
 
-        function toggleMusic() {
-            const backgroundMusic = document.getElementById('backgroundMusic');
-            const toggleMusicButton = document.getElementById('toggleMusicButton');
+function toggleMusic() {
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const toggleMusicButton = document.getElementById('toggleMusicButton');
 
-            if (musicEnabled) {
-                backgroundMusic.pause();
-                toggleMusicButton.textContent = 'Enable Music';
-            } else {
-                backgroundMusic.play().then(() => {
-                    toggleMusicButton.textContent = 'Disable Music';
-                }).catch((error) => {
-                    console.error('Error playing audio:', error);
-                });
-            }
+    if (musicEnabled) {
+        backgroundMusic.pause();
+        toggleMusicButton.textContent = 'Enable Music';
+    } else {
+        backgroundMusic.play().then(() => {
+            toggleMusicButton.textContent = 'Disable Music';
+        }).catch((error) => {
+            console.error('Error playing audio:', error);
+        });
+    }
 
-            musicEnabled = !musicEnabled;
-        }
- 
+    musicEnabled = !musicEnabled;
+}
 });
