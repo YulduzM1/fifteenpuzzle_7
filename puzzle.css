@@ -1,7 +1,6 @@
 body {
     display: flex;
     justify-content: center;
-    
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -55,7 +54,8 @@ h1{
 }
 
 #shuffle-button {
-    top:10px;
+    position: absolute;
+    bottom: 0px;
     display: block;
     width: 100px;
     padding: 10px;
@@ -73,13 +73,16 @@ h1{
 }
 
 #game-info {
-    text-align: center;
+   display: block;
+    position: absolute;
     margin-bottom: 20px;
+    margin-left: -700px;
 }
 #toggleMusicButton {
+    position: absolute;
+    bottom: 40px;
+    display: block;
     margin-top: 10px;
-	margin-left: auto;
-    margin-right: auto;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
